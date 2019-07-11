@@ -16,30 +16,32 @@ class Index extends Component {
     }
 
     componentDidMount() {
-        // var id = this.props.match.params.id;
+        var id = this.props.match.params.id;
         var self = this;
         getAllUser().then(function(json) {
             self.setState({
-        //         id: user._id,
-        //         username: user.username,
-        //         email: user.email,
-        //         name: user.name,
-                budget: json,
-        //         transactions: user.transactions
+                // id: json._id,
+                // username: json.username,
+                // email: json.email,
+                // name: json.name,
+                budget: json.budget,
+                // transactions: json.transactions
 
             })
-    console.log(json);
+    console.log("USER", json);
+    // console.log(self.state)
         })
     }
 
 
     render() {
         return(
-            <>
-            <h1>Hello World</h1>
-            <h2>{this.state.budget}</h2>
-            <p>{this.state.budget}</p>
-            </>
+            <div>
+                <h1>Hello World</h1>
+                <h2>{this.state.budget}</h2>
+                <p>{this.state.email}</p>
+            </div>
+            
         )
     }
 }

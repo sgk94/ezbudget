@@ -45,6 +45,13 @@ class App extends Component {
             <li className="nav-item">
                 <Link to={'/login'} className="nav-link">Log In</Link>
               </li>
+            <li className="nav-item">
+                <Link 
+                    to={'/login'} 
+                    className="nav-link"
+                    onClick={this.handleLogOut}
+                >Log Out</Link>
+              </li>
               {/* <li className="nav-item">
                 <Link to={'/create'} className="nav-link">Create</Link>
               </li> */}
@@ -63,7 +70,7 @@ class App extends Component {
             )}
           />
           <Route
-            exact path="/login"
+            exact path='/login'
             render={props => (
               <LogIn
                 {...props}

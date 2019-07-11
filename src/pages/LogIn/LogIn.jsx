@@ -22,7 +22,7 @@ class LoginPage extends Component {
       this.props.handleSignupOrLogin();
       console.log("handlelogin worked");
       // Successfully signed up - show GamePage
-      this.props.history.push("/index");
+      this.props.history.push("/");
       console.log("hi calvin");
     } catch (err) {
       // Invalid user data (probably duplicate email)

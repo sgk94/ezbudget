@@ -30,7 +30,7 @@ class SignupForm extends Component {
       console.log("handlesignup worked");
       // Successfully signed up - show GamePage
       // this.props.history.push("/");
-      window.location = "/index";
+      window.location = "/";
       console.log("window worked");
     } catch (err) {
       // Invalid user data (probably duplicate email)
