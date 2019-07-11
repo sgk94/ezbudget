@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getUser } from '../../services/api';
+import { getAllUser } from '../../services/api';
 import { Link } from 'react-router-dom';
 
 class Index extends Component {
@@ -18,17 +18,17 @@ class Index extends Component {
     componentDidMount() {
         // var id = this.props.match.params.id;
         var self = this;
-        getUser().then(function(user) {
+        getAllUser().then(function(json) {
             self.setState({
         //         id: user._id,
         //         username: user.username,
         //         email: user.email,
         //         name: user.name,
-                budget: user,
+                budget: json,
         //         transactions: user.transactions
 
             })
-    console.log(user);
+    console.log(json);
         })
     }
 
@@ -38,6 +38,7 @@ class Index extends Component {
             <>
             <h1>Hello World</h1>
             <h2>{this.state.budget}</h2>
+            <p>{this.state.budget}</p>
             </>
         )
     }

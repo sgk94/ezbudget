@@ -1,5 +1,5 @@
 // index
-export function getUser() {
+export function getAllUser() {
     return fetch(`/api/users`).then(function(res) {
       return res.json();
     })
