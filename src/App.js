@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import { Link, Switch , Route} from 'react-router-dom';
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+// pages
 import Index from './pages/Homepage/Index';
 import userService from './utils/userService';
 import LogIn from './pages/LogIn/LogIn';
 import SignUp from './pages/SignUp/SignUp';
 import SignUpPage from './pages/SignUp/SignUp';
+import Profile from './pages/Profilepage/Profile';
+import EditProfile from './pages/EditProfile/EditProfile';
+
+import { Link, Switch , Route} from 'react-router-dom';
 
 class App extends Component {
-    constructor() {
-        super();
-        this.state={
-            user: userService.getUser()
-        }
-    }
 
     handleSignupOrLogin = () => {
         this.setState({ user: userService.getUser() });
@@ -26,19 +24,17 @@ class App extends Component {
         userService.logout();
         console.log("logged out");
         this.setState({ user: null });
-        console.log(this.state.user);
+        // console.log(this.state.user);
       };
 
   render () {
+
     return (
         <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <Link to={'/'} className="navbar-brand">EZBUDGET</Link>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-                <Link to={'/'} className="nav-link">Home</Link>
-              </li>
             <li className="nav-item">
                 <Link to={'/signup'} className="nav-link">Sign Up</Link>
               </li>
@@ -52,6 +48,12 @@ class App extends Component {
                     onClick={this.handleLogOut}
                 >Log Out</Link>
               </li>
+            <li className="nav-item">
+                <Link 
+                    to={'/profile'} 
+                    className="nav-link"
+                >Profile</Link>
+              </li>
               {/* <li className="nav-item">
                 <Link to={'/create'} className="nav-link">Create</Link>
               </li> */}
@@ -59,7 +61,14 @@ class App extends Component {
           </div>
         </nav>
         <Switch>
-          <Route exact path='/' component={ Index } />
+          <Route exact path='/' 
+          render={props => (
+              <Index 
+              {...props}
+              />
+          )}
+          />
+          
           <Route 
           exact path='/signup' 
           render={props => (
@@ -75,6 +84,22 @@ class App extends Component {
               <LogIn
                 {...props}
                 handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            )}
+          />
+          <Route
+            exact path='/profile'
+            render={props => (
+              <Profile
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact path='/profile/edit'
+            render={props => (
+              <EditProfile
+                {...props}
               />
             )}
           />

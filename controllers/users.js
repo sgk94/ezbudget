@@ -4,7 +4,8 @@ const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
 
 module.exports = {
-  getAllUser,
+  getOneUser,
+  editProfile,
   // updateUser,
   // getAllTransactions,
   // createTransaction,
@@ -14,12 +15,28 @@ module.exports = {
 	login
 };
 
-function getAllUser(req, res) {
-  User.find({}).then(function(user) {
-    res.status(200).json(user);
-  });
+async function getOneUser(req, res) {
+    try{
+       await User.findById(req.user._id).then(function(user) {
+          console.log('USER:', user)
+        res.status(200).json(user);
+      });
+    }
+    catch(err) {
+        res.json({err})
+    }
 }
 
+async function editProfile(req, res) {
+    try{
+        await User.findByIdAndUpdate(req.user._id, req.body, {new: true}).then(function(profile) {
+            res.status(200).json(profile)
+        });
+    }
+    catch(err) {
+        res.json({err})
+    }
+}
 // function updateUser(req, res) {
 // 	User.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(function(user) {
 // 		res.status(200).json(user)

@@ -1,8 +1,39 @@
+import tokenService from "../utils/tokenService";
+
 // index
-export function getAllUser() {
-    return fetch(`/api/users`).then(function(res) {
+export function getOneUser() {
+    return fetch(`/api/users`,{
+        headers: {
+            // 'content-type': 'application/json',
+            'Authorization': "Bearer " + tokenService.getToken()
+        }
+    }).then(function(res) {
       return res.json();
     })
+  }
+
+  // show profile
+  export function getProfile(id) {
+      return fetch(`/api/profile`).then(function(res) {
+          return res.json();
+      })
+  }
+
+  // edit profile
+  export function editProfile(profile) {
+      return fetch(`/api/profile/edit`, {
+          method: 'PUT',
+          body: JSON.stringify({
+            budget: profile.budget,
+            name: profile.name
+          }),
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': "Bearer " + tokenService.getToken()
+          }
+      }).then(function(res) {
+          return res.json();
+      })
   }
   
   // show
