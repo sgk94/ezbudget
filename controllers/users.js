@@ -6,13 +6,13 @@ const SECRET = process.env.SECRET;
 module.exports = {
   getOneUser,
   editProfile,
-  // updateUser,
-  // getAllTransactions,
-  // createTransaction,
-  // updateTransaction,
-	// deleteTransaction,
-	signup,
-	login
+  createTransaction,
+  getOneTransaction,
+  editTransaction,
+  deleteTransaction,
+  getAllTransactions,
+  signup,
+  login
 };
 
 async function getOneUser(req, res) {
@@ -37,77 +37,94 @@ async function editProfile(req, res) {
         res.json({err})
     }
 }
-// function updateUser(req, res) {
-// 	User.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(function(user) {
-// 		res.status(200).json(user)
-// 	})
-// }
 
-// function getAllTransactions(req, res) {
-// 	User.transactions.find({}).then(function())
-// }
+async function getAllTransactions(req, res) {
+    try{
+        await User.findById(req.user).then(function(user) {
+            console.log('test 1', user)
+            console.log('test 2', user.transactions)
+            let transactions = user.transactions;
+            return res.status(200).json(transactions)
+        });
+    }
+    catch(err) {
+        res.json({err})
+    }
+}
 
-// function createTransaction(req, res) {
-// 	User.create(req.body).then(function(user) {
-// 		res.status(201).json(user);
-// 	});
-// }
+async function createTransaction(req, res) {
+    try{
+        await User.findById(req.user).then(function(user) {
+            user.transactions.push(req.body);
+            user.save(function(user) {
+                res.status(201).json(user);
+            });
+        });
+    }
+    catch(err) {
+        res.json({err})
+    }
+}
 
-// function updateTransaction(req, res) {
-//   User.transactions.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(function(user) {
-//     res.status(200).json(user);
-//   });
-// }
+async function getOneTransaction(req, res) {
+    try{
+        await 
+        User.findById(req.user).then(function(user) {
+           var oneTransaction = user.transactions.find(transaction => 
+               transaction.id === req.params.id
+            )
+                // console.log('test', oneTransaction)
+                res.status(200).json(oneTransaction)
+        });
+    }
+    catch(err) {
+        res.json({err})
+    }
+}
 
-// function deleteTransaction(req, res) {
-//   User.transactions.findByIdAndRemove(req.params.id).then(function(user) {
-//     res.status(200).json(user);
-//   });
-// }
+async function editTransaction(req, res) {
+    try {
+        await User.findById(req.user._id).then(function(user) {
+          var oneTransaction = user.transactions.id(req.params.id);
+          console.log('oneTransaction found: ', oneTransaction);
+          oneTransaction.set(req.body);
+          return user.save(trans => {
+            console.log('oneTransaction has been set', oneTransaction)
+            return res.status(200).json(trans) 
+          });
+        });
+     }
+    catch(err) {
+        res.json({err})
+    }
+  }
 
+  async function deleteTransaction(req, res) {
+      try {
+      await User.findById(req.user._id).then(function(user) {
+       console.log('test', user)
+       console.log('test 2', user.transactions)
+       console.log('test 3', user.transactions.id(req.params.id))
+       console.log('test 4', req.params.id)
+       user.transactions.id(req.params.id).remove();
+         user.save(function(user) {
+        res.status(200).json(user)
+        });    
+      });
+  }
 
-
-// function getAllUsers(req, res) {
-//   User.find({}).then(function(Users) {
-//     console.log(Users);
-//     res.status(200).json(Users);
-//   });
-// }
-
-// function upvoteUser(req, res) {
-//   User.findById(req.params.id).then(function(User) {
-//     User.upvotes += 1;
-//     User.save(function(User) {
-//       res.status(200).json(User);
-//     })
-//   })
-// }
-
-// function downvoteUser(req, res) {
-//   User.findById(req.params.id).then(function(User) {
-//     User.upvotes -= 1;
-//     User.save(function(User) {
-//       res.status(200).json(User);
-//     })
-//   })
-// }
-
-// function addComment(req, res) {
-//   User.findById(req.params.id).then(function(User) {
-//     User.comments.push(req.body);
-//     User.save(function(User) {
-//       res.status(200).json(User);
-//     })
-//   })
-// }
+  catch(err) {
+      res.json({err})
+  }
+}
 
 async function signup(req, res) {
   console.log("hit");
   const user = new User(req.body);
-  console.log(user);
+//   console.log(user);
   try {
     await user.save();
-    console.log(user);
+    // console.log(user);
     // TODO: Send back a JWT instead of the user
     const token = createJWT(user);
     res.json({ token });

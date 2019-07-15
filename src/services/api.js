@@ -35,50 +35,80 @@ export function getOneUser() {
           return res.json();
       })
   }
+
+  // get all transactions
+  export function getAllTransactions() {
+    return fetch(`/api/transactions/`, {
+        headers: {
+          'Authorization': "Bearer " + tokenService.getToken()
+        }
+    }).then(function(res) {
+        return res.json();
+    }) 
+  }
   
-  // show
-//   export function getPost(id) {
-//     return fetch(`/api/posts/${id}`).then(function(res) {
-//       return res.json();
-//     })
-//   }
+  // create Transaction
+  export function createTransaction(transaction) {
+      return fetch('/api/transactions/new', {
+          method: 'POST',
+          body: JSON.stringify({
+            date: transaction.date,
+            amount: transaction.amount,
+            transactionType: transaction.transactionType,
+            description: transaction.description
+          }),
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': "Bearer " + tokenService.getToken()
+          }
+      }).then(function(res) {
+          return res.json();
+      })
+  }
   
-  // create
-//   export function createPost(post) {
-//     return fetch('/api/posts', {
-//       method: 'POST',
-//       body: JSON.stringify({
-//         title: post.name,
-//         body: post.body
-//       }),
-//       headers: {
-//         'content-type': 'application/json'
-//       }
-//     })
-//   }
+//   get Transaction
+  export function getOneTransaction(id) {
+      console.log(id)
+      return fetch(`/api/transactions/${id}`, {
+          headers: {
+            'Authorization': "Bearer " + tokenService.getToken()
+          }
+      }).then(function(res) {
+          return res.json();
+      })
+  }
   
-  // edit
-//   export function editPost(post) {
-//     return fetch(`/api/posts/${post.id}`, {
-//       method: 'PUT',
-//       body: JSON.stringify({
-//         title: post.title,
-//         body: post.body
-//       }),
-//       headers: {
-//         'content-type': 'application/json'
-//       }
-//     })
-//   }
+  // edit Transaction
+  export function editTransaction(transaction) {
+    return fetch(`/api/transactions/${transaction.id}/edit`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        date: transaction.date,
+        amount: transaction.amount,
+        transactionType: transaction.transactionType,
+        description: transaction.description
+      }),
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': "Bearer " + tokenService.getToken()
+      }
+    }).then(function(res) {
+        return res.json();
+    })
+  }
   
-  // delete
-//   export function deletePost(id) {
-//     return fetch(`/api/posts/${id}`, {
-//       method: 'delete'
-//     }).then(function(res) {
-//       return res.json()
-//     });
-//   }
+  // delete Transaction
+  export function deleteTransaction(id) {
+    return fetch(`/api/transactions/${id}`, {
+      method: 'delete',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': "Bearer " + tokenService.getToken()
+      }
+    }).then(function(res) {
+      return res.json()
+    });
+  }
   
   // upvote/downvote posts
 //   export function upvotePost(id, type) {

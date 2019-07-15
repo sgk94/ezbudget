@@ -4,14 +4,15 @@ var usersController = require('../controllers/users');
 
 /* GET /api/posts */
 router.post('/signup', usersController.signup);
-router.post('/login', usersController.login);
+router.post('/login', usersController.login)    ;
 router.use(require('../config/auth'))
 router.get('/users', checkAuth, usersController.getOneUser);
 router.put('/profile/edit', checkAuth, usersController.editProfile);
-// router.get('/users/:id', usersController.getOnePost);
-// router.post('/users', usersController.createPost);
-// router.put('/users/:id/downvote', usersController.downvotePost);
-// router.delete('/users/:id', usersController.deletePost);
+router.post('/transactions/new', usersController.createTransaction);
+router.get('/transactions/:id', usersController.getOneTransaction);
+router.put('/transactions/:id/edit', usersController.editTransaction);
+router.delete('/transactions/:id', usersController.deleteTransaction);
+router.get('/transactions', usersController.getAllTransactions);
 // router.put('/users/:id', usersController.updatePost);
 // router.post('/users/:id/transactions', usersController.addComment);
 

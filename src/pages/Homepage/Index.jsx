@@ -25,10 +25,17 @@ class Index extends Component {
 
 
     render() {
+        let count = 0;
+     let total = this.state.transactions.map((transaction) => {
+         count += transaction.amount
+         console.log("COUNT", count);
+     })
+
+
      let transactions = this.state.transactions.map((transaction, idx) => {
             return (
                 <li key={idx}>
-                    <Link to={`/transaction/${transaction._id}`}>{transaction.amount}</Link>
+                    <Link to={`/transactions/${transaction._id}`}>{transaction.amount}</Link>
                 </li>
             )
         });
@@ -38,11 +45,15 @@ class Index extends Component {
                <p>{this.state.name}</p>
                <div>Starting</div>
                <div>${this.state.budget}</div>
+               <div>Current</div>
+               <div>${ this.state.budget - count }</div>
                <p>{console.log(transactions)}</p>
                <p>{this.state.email}</p>
                 <ul>
-                    { transactions.length > 0 ? transactions : 'No Transactions'}
+                   Transactions { transactions.length > 0 ? transactions : 'No Transactions'}
                 </ul>
+                <Link to='/transactions/new' className="btn btn-danger">Add Transaction</Link>
+                <Link to='/transactions' className="btn btn-danger">View All</Link>
             </div>
             
         )

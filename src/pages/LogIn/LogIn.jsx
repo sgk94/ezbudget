@@ -34,7 +34,7 @@ class LoginPage extends Component {
     return (
       <div className="LoginPage">
         {/* <header className="header-footer">Log In</header> */}
-        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+        <form className="form-signin" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <div className="col-sm-12">
               <input

@@ -8,8 +8,14 @@ import userService from './utils/userService';
 import LogIn from './pages/LogIn/LogIn';
 import SignUp from './pages/SignUp/SignUp';
 import SignUpPage from './pages/SignUp/SignUp';
+// Profile
 import Profile from './pages/Profilepage/Profile';
 import EditProfile from './pages/EditProfile/EditProfile';
+// Transaction CRUD
+import CreateTransaction from './pages/CreateTransaction/CreateTransaction';
+import ShowTransaction from './pages/ShowTransaction/ShowTransaction';
+import EditTransaction from './pages/EditTransaction/EditTransaction';
+import IndexTransaction from './pages/IndexTransaction/IndexTransactions';
 
 import { Link, Switch , Route} from 'react-router-dom';
 
@@ -28,35 +34,35 @@ class App extends Component {
       };
 
   render () {
-
     return (
         <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <Link to={'/'} className="navbar-brand">EZBUDGET</Link>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-                <Link to={'/signup'} className="nav-link">Sign Up</Link>
-              </li>
-            <li className="nav-item">
-                <Link to={'/login'} className="nav-link">Log In</Link>
-              </li>
-            <li className="nav-item">
-                <Link 
-                    to={'/login'} 
-                    className="nav-link"
-                    onClick={this.handleLogOut}
-                >Log Out</Link>
-              </li>
-            <li className="nav-item">
-                <Link 
-                    to={'/profile'} 
-                    className="nav-link"
-                >Profile</Link>
-              </li>
-              {/* <li className="nav-item">
-                <Link to={'/create'} className="nav-link">Create</Link>
-              </li> */}
+                <li className="nav-item">
+                    <Link to={'/signup'} className="nav-link">Sign Up</Link>
+                </li>
+                {
+                    1 ? 
+                    <li className="nav-item">
+                        <Link to={'/login'} className="nav-link">Log In</Link>
+                    </li> 
+                    :
+                    <li className="nav-item">
+                        <Link 
+                        to={'/login'} 
+                        className="nav-link"
+                        onClick={this.handleLogOut}
+                        >Log Out</Link>
+                    </li>
+                }
+                <li className="nav-item">
+                    <Link 
+                        to={'/profile'} 
+                        className="fas fa-user fa-2x nav-link"
+                    ></Link>
+                </li>
             </ul>
           </div>
         </nav>
@@ -103,13 +109,38 @@ class App extends Component {
               />
             )}
           />
-          {/* <Route exact path='/create' component={ Create } />
-          <Route exact path='/posts/:id' render={ (props) =>
-            <Show {...props} />
-           } />
-          <Route exact path='/posts/:id/edit' render={ (props) => 
-            <Edit {...props} />
-           } /> */}
+          <Route
+            exact path='/transactions/new'
+            render={props => (
+              <CreateTransaction
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact path='/transactions/:id'
+            render={props => (
+              <ShowTransaction
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact path='/transactions/:id/edit'
+            render={props => (
+              <EditTransaction
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact path='/transactions'
+            render={props => (
+              <IndexTransaction
+                {...props}
+              />
+            )}
+          />
         </Switch>
       </div>
     )
