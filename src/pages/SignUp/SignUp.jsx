@@ -14,7 +14,7 @@ class SignUpPage extends Component {
   render() {
     return (
       <div className="SignUpPage">
-        <h1>Sign Up Page</h1>
+        <h1>Sign Up</h1>
         <SignUpForm {...this.props} />
       </div>
     );

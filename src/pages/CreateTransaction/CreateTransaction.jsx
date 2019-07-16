@@ -37,7 +37,7 @@ handleSubmit = (e) => {
     render() {
         return(
             <div>
-                <h1>Create Transaction</h1>
+                <h1 id="create-trans-h1">Create Transaction</h1>
                 <form onSubmit= {this.handleSubmit}>
                     <label>Date</label>
                     <br/>

@@ -50,9 +50,9 @@ class SignupForm extends Component {
   render() {
     return (
       <div>
-        <header className="header-footer">Sign Up</header>
-        <form className="form-horizontal" onSubmit={this.handleSubmit}>
-          <div className="form-group">
+        {/* <header className="header-footer">Sign Up</header> */}
+        <form className="form-horizontal" onSubmit={this.handleSubmit} autoComplete="new-password">
+          <div>
             <div className="col-sm-12">
               <input
                 type="text"
@@ -64,7 +64,7 @@ class SignupForm extends Component {
               />
             </div>
           </div>
-          <div className="form-group">
+          <div>
             <div className="col-sm-12">
               <input
                 type="email"
@@ -76,7 +76,7 @@ class SignupForm extends Component {
               />
             </div>
           </div>
-          <div className="form-group">
+          <div>
             <div className="col-sm-12">
               <input
                 type="password"
@@ -88,7 +88,7 @@ class SignupForm extends Component {
               />
             </div>
           </div>
-          <div className="form-group">
+          <div>
             <div className="col-sm-12">
               <input
                 type="password"
@@ -100,7 +100,7 @@ class SignupForm extends Component {
               />
             </div>
           </div>
-          <div className="form-group">
+          <div>
             <div className="col-sm-12 text-center">
               <button
                 className="btn btn-default"

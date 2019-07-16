@@ -29,7 +29,7 @@ class EditTransaction extends Component {
 
     handleDelete = (id) => {
         deleteTransaction(id).then(function() {
-            window.location ='/';
+            window.location ='/transactions';
         });
     }
     

@@ -4,9 +4,9 @@ const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 6;
 
 var TransactionSchema = new mongoose.Schema({
-  date: Date,
+  date: {type: Date, default: Date.now },
   transactionType: String,
-  amount: Number,
+  amount: {type: Number, min: 0},
   description: String
 }, {
   timestamps: true

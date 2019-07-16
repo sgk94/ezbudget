@@ -4,9 +4,17 @@ import userService from '../../utils/userService';
 
 class LoginPage extends Component {
   state = {
+    user: null,
     email: "",
     pw: ""
   };
+
+  componentDidMount() {
+        var self = this;
+            self.setState({
+               user: null
+            })
+    } 
 
   handleChange = e => {
     this.setState({
@@ -62,8 +70,7 @@ class LoginPage extends Component {
           <div className="form-group">
             <div className="col-sm-12 text-center">
               <button className="btn btn-default">Log In</button>
-              &nbsp;&nbsp;&nbsp;
-              <Link to="/signup">Sign Up</Link>
+              <button className="btn btn-default"><Link to="/signup">Sign Up</Link></button>
             </div>
           </div>
         </form>

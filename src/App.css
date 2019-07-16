@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  text-decoration: none;
 }
 
 .App-logo {
@@ -30,4 +31,55 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+i.large.material-icons {
+    font-size: 50px;
+}
+
+.nav {
+    padding: 0px 15px 0px 15px;
+}
+
+
+
+/* Table header */
+th.date-th {
+    padding: 30px 100px 30px 0px
+}
+th.type-th {
+    padding: 30px 100px 30px 0px;
+}
+th.amount-th {
+    padding: 30px 100px 30px 0px;
+}
+
+/* Table values */
+td.date-trans {
+    padding: 30px 100px 30px 0px;
+}
+td.type-trans {
+    padding: 30px 100px 30px 0px;
+}
+td.amount-trans {
+    padding: 30px 100px 30px 0px;
+}
+
+div {
+    color: black;
+}
+
+#table-row {
+    border-color: grey;
+    border-style: solid;
+    border-width: 1px;
+    margin: 0px 0px 5px 0px;
+}
+
+#table-row:hover {
+    background-color: #bbdefb;
+}
+
+h1 {
+    font-size: 50px;
 }
