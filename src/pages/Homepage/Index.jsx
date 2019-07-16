@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { getOneUser } from '../../services/api';
 import { Link } from 'react-router-dom'; 
+import './homepage.css'
 
 class Index extends Component {
     constructor() {
         super();
         this.state = {
-            transactions: []
+            transactions: [],
+            budget: '',
         }
     }
    
@@ -17,7 +19,8 @@ class Index extends Component {
             self.setState({
                 name: user.name,
                 budget: user.budget,
-                transactions: user.transactions
+                transactions: user.transactions,
+                date: user.date
             })
             console.log(self.state)
         })
@@ -33,17 +36,28 @@ class Index extends Component {
      
      let transactions = this.state.transactions.map((transaction, idx) => {
             return (
-                <div id="table-row" className="row" key={idx}>
-                    <Link to={`/transactions/${transaction._id}`}>
-                    <div className="col s2 m2 l2">{transaction.date}</div>
-                    <div className="col s5 m5 l5">{transaction.transactionType}</div>
-                    <div className="col s5 m5 l5">${transaction.amount}</div>
-                    </Link>
-                </div>
+                <Link key={idx }to={`/transactions/${transaction._id}`}>
+                    <div className="row card-panel">
+                        <div className="row">
+                            <div className="col s4 m4 l4 ">Date</div>
+                            <div className="col s4 m4 l4">Type</div>
+                            <div className="col s4 m4 l4">Amount</div>
+                        </div>
+                        <div className="row">
+                            <div className="col s4 m4 l4">{new Date(transaction.date).toLocaleDateString()}</div>
+                            <div className="col s4 m4 l4">{(transaction.transactionType)}</div>
+                            <div className="col s4 m4 l4">${transaction.amount}</div>
+                        </div>
+                    </div>
+                </Link>
             )
         });
+
         return(
-            <div className="center">
+           
+        <div className="bg">
+            <div className="container">
+              <div className="center">
                 <div className="row">
                     <h1 className="col s12">{this.state.name}</h1>
                 </div>
@@ -53,20 +67,25 @@ class Index extends Component {
                 </div>
                 <div className="row">
                     <h2 className="col s6">${this.state.budget}</h2>
-                    <h2 className="col s6">${ this.state.budget - count }</h2>
+                    { (this.state.budget - count) >= 0 ?
+                    <h2 className="positive col s6">${ this.state.budget - count }</h2>
+                    :
+                    <h2 className="negative col s6">${ this.state.budget - count }</h2>
+                    }
                 </div>
                 <div className="row">
-                    <div className="col s2 m2 l2">Date</div>
-                    <div className="col s5 m5 l5">Type</div>
-                    <div className="col s5 m5 l5">Amount</div>
+                    <h4>Recent Transaction</h4>
                 </div>
-                    { transactions.length > 0 ? transactions.slice(0, 5): <p>No Transactions</p>}
+                    { transactions.length > 0 ? transactions.slice(0, 5): <h3>No Transactions</h3>}
+                    <br/>
                 <div className="row">
-                    <Link to='/transactions/new' className="btn btn-danger col s6 m6 l6">Add Transaction</Link>
-                    <Link to='/transactions' className="btn btn-danger col s6 m6 l6">View All</Link>
+                    <Link id="add-trans-btn" to='/transactions/new' className="btn light-blue darken-4 col s5 m5 l5">Add</Link>
+                    <div className="col s2 m1l1"></div>
+                    <Link id="view-all-btn" to='/transactions' className="btn light-blue darken-4 col s5 m5 l5">View All</Link>
                 </div>
+              </div>
             </div>
-            
+          </div>
         )
     }
 }

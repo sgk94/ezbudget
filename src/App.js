@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import getUser from './utils/userService';
 // pages
 import Index from './pages/Homepage/Index';
 import userService from './utils/userService';
@@ -17,13 +18,13 @@ import ShowTransaction from './pages/ShowTransaction/ShowTransaction';
 import EditTransaction from './pages/EditTransaction/EditTransaction';
 import IndexTransaction from './pages/IndexTransaction/IndexTransactions';
 
-import { Link, Switch , Route} from 'react-router-dom';
+import { Link, Switch , Route, Redirect} from 'react-router-dom';
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            user: {}
+            user: userService.getUser()
         }
     }
 
@@ -37,12 +38,11 @@ class App extends Component {
         <Navbar 
         user={this.state.user}
         />
-     <div className="container">
+     <div className="bg">
         <Switch>
           <Route exact path='/' 
           render={props => (
-              
-                  this.state.user? 
+                  userService.getUser() ? 
                   <Index 
                   {...props}
                   />
@@ -51,7 +51,6 @@ class App extends Component {
                   {...props}
                   handleSignupOrLogin={this.handleSignupOrLogin}
                    />
-                
           )}
           />
           
@@ -62,6 +61,7 @@ class App extends Component {
                 {...props}
                 handleSignupOrLogin={this.handleSignupOrLogin}
               />
+              
             )}
           />
           <Route
@@ -77,49 +77,67 @@ class App extends Component {
           <Route
             exact path='/profile'
             render={props => (
+                userService.getUser() ? 
               <Profile
                 {...props}
               />
+              :
+              <Redirect to='/login' />
             )}
           />
           <Route
             exact path='/profile/edit'
             render={props => (
+                userService.getUser() ? 
               <EditProfile
                 {...props}
               />
+              :
+              <Redirect to='/login' />
             )}
           />
           <Route
             exact path='/transactions/new'
             render={props => (
+                userService.getUser() ? 
               <CreateTransaction
                 {...props}
               />
+              :
+              <Redirect to='/login' />
             )}
           />
           <Route
             exact path='/transactions/:id'
             render={props => (
+                userService.getUser() ? 
               <ShowTransaction
                 {...props}
               />
+              :
+              <Redirect to='/login' />
             )}
           />
           <Route
             exact path='/transactions/:id/edit'
             render={props => (
+                userService.getUser() ? 
               <EditTransaction
                 {...props}
               />
+              :
+              <Redirect to='/login' />
             )}
           />
           <Route
             exact path='/transactions'
             render={props => (
+                userService.getUser() ? 
               <IndexTransaction
                 {...props}
               />
+              :
+              <Redirect to='/login' />
             )}
           />
         </Switch>

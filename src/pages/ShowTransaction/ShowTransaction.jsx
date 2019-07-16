@@ -31,17 +31,20 @@ class ShowTransaction extends Component {
 
     render() {
         return(
-            <div>
-                <h1>Show Transaction</h1>
-                <label>Date</label>
-                <h3>{this.state.date}</h3>
-                <label>Amount</label>
-                <h2>{this.state.amount}</h2>
-                <label>Type</label>
-                <h2>{this.state.transactionType}</h2>
-                <label>Description</label>
-                <h2>{this.state.description}</h2>
-                <Link to={`/transactions/${this.state.id}/edit`}>Edit</Link>
+            <div className="container">
+                    <h1>Show Transaction</h1>
+                <div class="card-panel">
+                    <label>Date</label>
+                    <h3>{new Date(this.state.date).toLocaleDateString()}</h3>
+                    <label>Amount</label>
+                    <h3>{this.state.amount}</h3>
+                    <label>Type</label>
+                    <h3>{this.state.transactionType}</h3>
+                    <label>Description</label>
+                    <h3>{this.state.description}</h3>
+                </div>
+                    <Link id="edit-btn" className="btn blue darken-2 col s5 m5 l5" to={`/transactions/${this.state.id}/edit`}>Edit Transaction</Link>
+                    <br/>
             </div>
         )
     }

@@ -23,7 +23,7 @@ class Navbar extends Component {
     render() {
         return(
         <div>
-            <nav className="nav blue darken-3">
+            <nav className="nav light-blue darken-4">
           <div className="nav-wrapper">
           <Link to={'/'} className="brand-logo center">EZBUDGET</Link>
           <Link to={'#'}className="sidenav-trigger" data-target="mobile-links"><i className="material-icons hide-on-large-only">menu</i></Link>
@@ -31,7 +31,7 @@ class Navbar extends Component {
                 <li id="profile-icon" className="right">
                     <Link 
                         to={'/profile'} 
-                    ><i className="large material-icons">account_box</i>
+                    ><i className="large material-icons">account_circle</i>
                     </Link>
                 </li>
                 {
@@ -49,7 +49,7 @@ class Navbar extends Component {
             </ul>
           </div>
         </nav>
-            <ul className="sidenav blue darken-3 " id="mobile-links"> 
+            <ul className="sidenav light-blue darken-4" id="mobile-links"> 
         {
             this.props.user ?
         <div>

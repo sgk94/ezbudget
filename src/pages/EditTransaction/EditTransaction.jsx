@@ -61,29 +61,30 @@ class EditTransaction extends Component {
 
     render() {
         return(
-            <div>
+            <div className="container">
                 <h1>Edit Transaction</h1>
-                <hr/>
-                <form onSubmit= {this.handleSubmit}>
-                    <label>Date</label>
-                    <br/>
-                    <input onChange={this.handleDate} value={this.state.date} />
-                    <br/>
-                    <label>Amount</label>
-                    <br/>
-                    <input onChange={this.handleAmount} value={this.state.amount} />
-                    <br/>
-                    <label>Transaction Type</label>
-                    <br/>
-                    <input onChange={this.handleTransactionType } value={this.state.transactionType} />
-                    <br/>
-                    <label>Description</label>
-                    <br/>
-                    <textarea onChange={this.handleDescription} value={this.state.description}></textarea>
-                    <br/>
-                    <input type="submit" className="btn btn-primary" value="Update"/>
-                </form>
-                <input type="submit" onClick= { () => this.handleDelete(this.state.id)} value="Delete"/>
+                <div className="card-panel">
+                    <form onSubmit= {this.handleSubmit}>
+                        <label>Date</label>
+                        <br/>
+                        <input onChange={this.handleDate} value={new Date(this.state.date).toLocaleDateString()} />
+                        <br/>
+                        <label>Amount</label>
+                        <br/>
+                        <input onChange={this.handleAmount} value={this.state.amount} />
+                        <br/>
+                        <label>Transaction Type</label>
+                        <br/>
+                        <input onChange={this.handleTransactionType } value={this.state.transactionType} />
+                        <br/>
+                        <label>Description</label>
+                        <br/>
+                        <textarea className="materialize-textarea" onChange={this.handleDescription} value={this.state.description}></textarea>
+                        <br/>
+                        <input type="submit" className="btn light-blue darken-4 col s5 m5 l5" value="Update"/>
+                    </form>
+                </div>
+                    <input className="btn light-blue darken-4 col s5 m5 l5" type="submit" onClick= { () => this.handleDelete(this.state.id)} value="Delete"/>
             </div>
         )
     }

@@ -1,0 +1,63 @@
+.bg {
+    background-image: url(../../../src/images/nature.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+div.row.card-panel {
+    background-color: rgba(250, 250, 250, .8);
+    /* background-color: black; */
+    padding: 20px 5px 5px 5px;
+    font-size: 20px;
+    margin: 0px 0px 10px 0px;
+}
+div.card-panel {
+    margin: 0;
+}
+
+div.bg {
+    position: fixed;
+    width: 100%;
+}
+
+#add-trans-btn {
+    display: flex;
+    height: 50px;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+}
+
+#view-all-btn {
+    display: flex;
+    height: 50px;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+}
+
+label {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 25px;
+    margin: 5px 0px 20px 0px;
+}
+
+#edit-btn {
+    display: flex;
+    height: 50px;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+    margin: 30px 5px;
+}

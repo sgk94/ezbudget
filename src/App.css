@@ -41,8 +41,6 @@ i.large.material-icons {
     padding: 0px 15px 0px 15px;
 }
 
-
-
 /* Table header */
 th.date-th {
     padding: 30px 100px 30px 0px
@@ -82,4 +80,15 @@ div {
 
 h1 {
     font-size: 50px;
+}
+
+h2.col.s6 {
+    margin: 0px 0px 20px 0px;
+}
+
+h2.positive.col.s6 {
+ color: #1AAE9F;
+}
+h2.negative.col.s6 {
+ color: #D3455B;
 }
