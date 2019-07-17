@@ -25,13 +25,18 @@ class Profile extends Component {
 
     render() {
         return (
-            <div>
-                <h1>This is the profile page</h1>
-                <ul>
-                    <li>${this.state.budget}</li>
-                    <li>{this.state.name}</li>
-                </ul>
-                <Link to={`/profile/edit`} className="btn btn-secondary">Edit Profile</Link>
+            <div className="container">
+                <h1>My Profile</h1>
+                <div className="card-panel">
+                    <div>
+                        <label>Name</label>
+                            <h3>{this.state.name}</h3>
+                        <label>Budget</label>
+                            <h3>${this.state.budget}</h3>
+                    </div>
+                </div>
+                <br/>
+                <Link to={`/profile/edit`} className="btn light-blue darken-4 col s5 m5 l5">Edit Profile</Link>
             </div>
         )
     }

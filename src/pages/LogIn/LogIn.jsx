@@ -40,40 +40,35 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="LoginPage">
-        {/* <header className="header-footer">Log In</header> */}
-        <form className="form-signin" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Email"
-                value={this.state.email}
-                name="email"
-                onChange={this.handleChange}
-              />
-            </div>
+      <div className="container">
+          <div id="login-card" className="card-panel">
+              <form onSubmit={this.handleSubmit}>
+                  <header>Enter E-mail</header>
+                    <input
+                        type="email"
+                        className="form-control"
+                        // placeholder="Email"
+                        value={this.state.email}
+                        name="email"
+                        onChange={this.handleChange}
+                        />
+                  <header>Enter Password</header>
+                    <input
+                        type="password"
+                        className="form-control"
+                        // placeholder="Password"
+                        value={this.state.pw}
+                        name="pw"
+                        onChange={this.handleChange}
+                    />
+                <div className="row">
+                    <br/>
+                    <button className="btn light-blue darken-4 col s5 m5 l5">Log In</button>
+                    <div className="col s2 m2 l2"></div>
+                    <Link className="btn light-blue darken-4 col s5 m5 l5" to="/signup">Sign Up</Link>
+                </div>
+              </form>
           </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Password"
-                value={this.state.pw}
-                name="pw"
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12 text-center">
-              <button className="btn btn-default">Log In</button>
-              <button className="btn btn-default"><Link to="/signup">Sign Up</Link></button>
-            </div>
-          </div>
-        </form>
       </div>
     );
   }

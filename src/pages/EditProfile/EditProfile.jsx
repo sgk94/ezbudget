@@ -39,20 +39,21 @@ class EditProfile extends Component {
 
     render() {
         return(
-            <div>
+            <div className="container">
                 <h1>Edit Profile</h1>
-                <hr/>
-                <form onSubmit={this.handleSubmit}>
-                    <label> Budget </label>
-                    <br/>
-                    <input onChange={this.handleBudget} placeholder={this.state.budget}/>
-                    <br/>
-                    <label> Name </label>
-                    <br/>
-                    <input onChange={this.handleName} placeholder={this.state.name}/>
-                    <br/>
-                    <input type="submit" className="btn btn-primary" value="Update"/>
-                </form>
+                <div className="card-panel">
+                    <form onSubmit={this.handleSubmit}>
+                        <label> Budget </label>
+                        <br/>
+                        <input onChange={this.handleBudget} value={this.state.budget}/>
+                        <br/>
+                        <label> Name </label>
+                        <br/>
+                        <input onChange={this.handleName} value={this.state.name}/>
+                        <br/>
+                        <input type="submit" className="btn light-blue darken-4 col s5 m5 l5" value="Update"/>
+                    </form>
+                </div>
             </div>
 
         )

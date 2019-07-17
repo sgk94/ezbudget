@@ -17,7 +17,8 @@ div.row.card-panel {
     margin: 0px 0px 10px 0px;
 }
 div.card-panel {
-    margin: 0;
+    margin: 0px 0px 5px 0px;
+    background-color: rgba(250, 250, 250, .8);
 }
 
 div.bg {
@@ -60,4 +61,25 @@ h3 {
     align-items: center;
     padding: 10px 5px;
     margin: 30px 5px;
+}
+
+#delete-btn {
+    background-color: #D3455B;
+}
+
+button.btn.light-blue.darken-4.col.s12.m12.l12 {
+    font-size: 20px;
+    height: 50px;
+}
+
+#login-card {
+    margin: 100px 0px 0px 0px;
+}
+
+#signup-card {
+    margin: 100px 0px 0px 0px;
+}
+
+header {
+    margin: 15px 0px 0px 0px;
 }

@@ -60,6 +60,7 @@ class EditTransaction extends Component {
     
 
     render() {
+        let date = (new Date(this.state.date).toLocaleDateString())
         return(
             <div className="container">
                 <h1>Edit Transaction</h1>
@@ -67,7 +68,7 @@ class EditTransaction extends Component {
                     <form onSubmit= {this.handleSubmit}>
                         <label>Date</label>
                         <br/>
-                        <input onChange={this.handleDate} value={new Date(this.state.date).toLocaleDateString()} />
+                        <input onChange={this.handleDate} placeholder={date} />
                         <br/>
                         <label>Amount</label>
                         <br/>
@@ -81,10 +82,14 @@ class EditTransaction extends Component {
                         <br/>
                         <textarea className="materialize-textarea" onChange={this.handleDescription} value={this.state.description}></textarea>
                         <br/>
+                    
                         <input type="submit" className="btn light-blue darken-4 col s5 m5 l5" value="Update"/>
                     </form>
                 </div>
-                    <input className="btn light-blue darken-4 col s5 m5 l5" type="submit" onClick= { () => this.handleDelete(this.state.id)} value="Delete"/>
+                <br/>
+                <div className="row">
+                    <button className="btn light-blue darken-4 col s12 m12 l12" type="submit" onClick= { () => this.handleDelete(this.state.id)} value="Delete">Delete</button>
+                </div>
             </div>
         )
     }

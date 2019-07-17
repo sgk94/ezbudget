@@ -13,8 +13,7 @@ class SignUpPage extends Component {
 
   render() {
     return (
-      <div className="SignUpPage">
-        <h1>Sign Up</h1>
+      <div className="container">
         <SignUpForm {...this.props} />
       </div>
     );
