@@ -21,13 +21,15 @@
 ### Background
 EZBUDGET, a budgeting app for users that want to be more financially responsible. It's mobile-friendly and shows you the budget you set to the current amount of money you have left based on your transactions.
 
+It also requires the user to sign up to protect your sensitive information.
+
 ---
 
 ## 2. **Technologies Used**
 
 ### Languages
 
-- React, Node, Express, Mongoose, MongoDB, Heroku, HTML 5, CSS3, Javascript, Materialize
+- React, Node, Express, Mongoose, MongoDB, Heroku, HTML 5, CSS3, Javascript, Materialize, JWT(Auth)
 
 ### IDE
 
