@@ -88,7 +88,7 @@ class EditTransaction extends Component {
                 </div>
                 <br/>
                 <div className="row">
-                    <button className="btn light-blue darken-4 col s12 m12 l12" type="submit" onClick= { () => this.handleDelete(this.state.id)} value="Delete">Delete</button>
+                    <button className="btn red darken-2 col s12 m12 l12" type="submit" onClick= { () => this.handleDelete(this.state.id)} value="Delete">Delete</button>
                 </div>
             </div>
         )
