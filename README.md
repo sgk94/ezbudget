@@ -1,4 +1,4 @@
-# **EZBUDGETn**
+# **EZBUDGET**
 
 ## **Table of Contents**
 
@@ -45,27 +45,34 @@ EZBUDGET, a budgeting app for users that want to be more financially responsible
 
 ---
 
-## 4. **Next Steps**
+## 4. **Unsolved Problems**
 
-- Add more celebrities to guess from
-- Add different categories
-- Improve to the overall lay out and fine tune CSS
+- Validation of all inputs. Not all of them are set up correctly.
+- Mobile friendly, but not necessarily the best desktop experience.
+- Does not have a filter to view specific transactions.
+- Does not have an obvious place to enter the intial budget.
 
 
 ---
 
-## 5. **Images**
-Start Screen
-![start screen](/images/start.png)
+## 5. **Future Enhancements**
 
-Render
-![start screen](/images/render.png)
+- Add improved validation.
+- Add a filter for more accurate transaction viewing.
+- Add more interesting functionality.
 
-Win
-![start screen](/images/win.png)
+## 6. **Images**
+Home Screen
+![home screen](/src/images/home.png)
 
-Lose
-![start screen](/images/lose.png)
+Create
+![create screen](/src/images/create.png)
+
+Log In
+![login screen](/src/images/login.png)
+
+Transactions
+![transactions screen](/src/images/transactions.png)
 
 
 
