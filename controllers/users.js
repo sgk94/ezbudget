@@ -55,7 +55,7 @@ async function getAllTransactions(req, res) {
 async function createTransaction(req, res) {
     try{
         await User.findById(req.user).then(function(user) {
-            user.transactions.push(req.body);
+            user.transactions.unshift(req.body);
             user.save(function(user) {
                 res.status(201).json(user);
             });

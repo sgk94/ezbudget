@@ -34,7 +34,7 @@ class App extends Component {
 
   render () {
     return (
-    <div>
+    <>
         <Navbar 
         user={this.state.user}
         />
@@ -142,7 +142,7 @@ class App extends Component {
           />
         </Switch>
        </div>
-      </div>
+      </>
     )
   }
 }

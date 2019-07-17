@@ -74,7 +74,7 @@ class Index extends Component {
                     }
                 </div>
                 <div className="row">
-                    <h4>Recent Transaction</h4>
+                    <h4>Recent Transactions</h4>
                 </div>
                     { transactions.length > 0 ? transactions.slice(0, 5): <h3>No Transactions</h3>}
                     <br/>
