@@ -41,6 +41,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="container">
+          <h1>Log In</h1>
           <div id="login-card" className="card-panel">
               <form onSubmit={this.handleSubmit}>
                   <header>Enter E-mail</header>

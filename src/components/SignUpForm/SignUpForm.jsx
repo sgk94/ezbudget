@@ -49,6 +49,8 @@ class SignupForm extends Component {
 
   render() {
     return (
+     <>   
+        <h1>Sign Up</h1>
       <div id="signup-card" className="card-panel">
         <form onSubmit={this.handleSubmit} autoComplete="new-password">
             <header>Name</header>
@@ -92,6 +94,7 @@ class SignupForm extends Component {
             </div>
           </form>
       </div>
+      </>
     );
   }
 }

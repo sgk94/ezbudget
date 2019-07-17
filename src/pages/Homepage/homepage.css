@@ -69,11 +69,12 @@ button.btn.light-blue.darken-4.col.s12.m12.l12 {
 }
 
 #login-card {
-    margin: 100px 0px 0px 0px;
+    padding: 20px 20px 20px 20px;
+    margin: 0px 0px 0px 0px;
 }
 
 #signup-card {
-    margin: 100px 0px 0px 0px;
+    margin: 0;
 }
 
 header {
